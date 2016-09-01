@@ -7,22 +7,43 @@
     <title>Angular Blog</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-social-buttons/social-buttons.css">
+    <link rel="stylesheet" href="bower_components/bootstrap-tags/dist/css/bootstrap-tags.css">
     <link rel="stylesheet" href="assets/css/app.css">
 </head>
 
 <body>
-    <div ng-view></div>
+    <header ng-include="'shared/header/header.html'"></header>    
 
+    <div class="container-fluid">
+        
+        <aside class="sidebars">
 
+            <div class="recent-posts" ng-include="'shared/sidebars/recent-posts.html'"></div>
+            <div class="categories" ng-include="'shared/sidebars/categories.html'"></div>
+            <div class="popular-tags" ng-include="'shared/sidebars/popular-tags'"></div>
+            
+        </aside>
 
+        <div class="main">
+            <div ng-view></div>
+        </div>        
+        
+    </div>
+    <hr>
+    <footer ng-include="'shared/footer/footer.html'"></footer>
+
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/bootstrap-tags/dist/js/bootstrap-tags.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="//da189i1jfloii.cloudfront.net/js/kinvey-angular-sdk-3.0.3.min.js"></script>
     <script src="app.js"></script>
-
     <!-- Controllers -->
-    <script src="componets/home/homeController.js"></script>
-
+    <script src="components/home/homeController.js"></script>
     <!-- Services -->
 </body>
 

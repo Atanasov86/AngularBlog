@@ -1,0 +1,136 @@
+body {
+    background-color: #EBEBEB;
+}
+
+
+/* Footer styles */
+
+footer a {
+  width: 45px;
+}
+
+/* End Footer styles */
+
+
+/* sidebar styles*/
+
+.sidebars {
+    width: 18%;
+    display: inline-block;
+}
+
+.categories,
+.recent-posts,
+.popular-tags {
+    background-color: white;
+    border-radius: 15px;
+    padding: 20px;
+}
+
+.categories,
+.popular-tags {
+    margin-top: 20px;
+}
+
+.categories h4,
+.recent-posts h4,
+.popular-tags h4 {
+    text-align: center;
+    margin-top: 0;
+}
+
+.list-group {
+    list-style: none;
+}
+
+.list-group li {
+    margin-top: 5px;
+}
+
+a.list-group-item {
+    font-size: 14px;
+}
+
+
+/* End sidebar styles */
+
+
+/* Container styles*/
+
+.main {
+    float: right;
+    width: 81%;
+    margin-left: 10px;
+    border-radius: 15px;
+    display: inline-block;
+}
+
+hr {
+    border-top: 1px solid white;
+}
+
+
+/* End container styles */
+
+
+/* Login form styles */
+
+.login-form {
+  background-color: white;
+  padding: 20px;
+  border-radius: 15px;
+  width: 40%;
+  margin: 0 auto;
+}
+
+.social-buttons .btn {
+  width: 45px;
+}
+
+#login-dp {
+    min-width: 250px;
+    padding: 14px 14px 0;
+    overflow: hidden;
+    background-color: rgba(255, 255, 255, .8);
+}
+
+#login-dp .help-block {
+    font-size: 12px
+}
+
+#login-dp .bottom {
+    background-color: rgba(255, 255, 255, .8);
+    border-top: 1px solid #ddd;
+    clear: both;
+    padding: 14px;
+}
+
+.social-buttons {
+
+}
+
+#login-dp .social-buttons {
+    margin: 12px 0
+}
+
+#login-dp .social-buttons a {
+    width: 49%;
+}
+
+#login-dp .form-group {
+    margin-bottom: 10px;
+}
+
+/*@media(max-width:768px) {
+    #login-dp {
+        background-color: inherit;
+        color: #fff;
+    }
+    #login-dp .bottom {
+        background-color: inherit;
+        border-top: 0 none;
+    }
+}*/
+
+
+/* End login form styles */
