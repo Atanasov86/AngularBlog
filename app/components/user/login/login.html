@@ -1,30 +1,32 @@
-<div class="row login-form">
-    <div class="col-md-12">
+<div class="row login-div">
+    <div class="col-md-offset-3 col-md-6 login-form">
         <span>Login via</span>
         <div class="social-buttons text-center">
-            <a href="#" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
-            <a href="#" class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
-            <a href="#" class="btn btn-social-icon btn-google-plus"><i class="fa fa-google-plus"></i></a>
+            <a ng-click="singInWithFacebook()" class="btn btn-social-icon btn-facebook"><i class="fa fa-facebook"></i></a>
+            <a class="btn btn-social-icon btn-twitter"><i class="fa fa-twitter"></i></a>
+            <a href="#" ng-click="singInWithGooglePlus()" class="btn btn-social-icon btn-google-plus"><i class="fa fa-google-plus"></i></a>
             <a href="#" class="btn btn-social-icon btn-github"><i class="fa fa-github"></i></a>
         </div>
         or
         <form class="form" role="form" id="login-nav">
             <div class="form-group">
                 <label class="sr-only" for="emailInput">Email address</label>
-                <input type="email" class="form-control" id="emailInput" placeholder="Email address" required>
+                <input type="text" ng-model="user.email" class="form-control input-lg" id="emailInput" placeholder="Username" required>
             </div>
             <div class="form-group">
-                <label class="sr-only" for="exampleInputPassword2">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword2" placeholder="Password" required>
-                <div class="help-block text-right"><a href="">Forget the password ?</a></div>
+                <label class="sr-only" for="passwordInput">Password</label>
+                <input type="password" ng-model="user.password" class="form-control input-lg" id="passwordInput" placeholder="Password" required>
+                <div class="help-block text-right"><a href="#/forget-password">Forget the password ?</a></div>
             </div>
             <div class="form-group">
-                <button type="submit" class="btn btn-primary btn-block">Sign in</button>
+                <button type="submit" ng-click="singIn(user)" class="btn btn-primary btn-block btn-lg">Sign in</button>
             </div>
-            <div class="checkbox">
-                <label>
-                    <input type="checkbox"> keep me logged-in
-                </label>
+            <div class="register-text">
+                <p class="text-center">
+                    Don`t have an account!
+                    <a href="#/register"> Sing Up Here</a>.
+                </p>
             </div>
         </form>
     </div>
+</div>
