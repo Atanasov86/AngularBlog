@@ -30,7 +30,7 @@ app.config([
 
         $routeProvider.when('/', {
             templateUrl: 'components/home/home.html',
-            controller: 'UserController'
+            controller: 'HomeController'
         });
 
         $routeProvider.when('/login', {
@@ -43,6 +43,11 @@ app.config([
             controller: 'UserController'
         });
 
+        $routeProvider.when('/profile', {
+            templateUrl: 'components/user/profile/profile.html',
+            controller: 'UserController'
+        });
+
         $routeProvider.when('/forget-password', {
             templateUrl: 'components/user/register.html',
             controller: 'UserController'
@@ -51,6 +56,11 @@ app.config([
         $routeProvider.when('/new-post', {
             templateUrl: 'components/home/new-post.html',
             controller: 'NewPostController'
+        });
+
+        $routeProvider.when('/post/:id', {
+            templateUrl: 'components/post/post.html',
+            controller: 'PostController'
         });
 
         $routeProvider.otherwise({

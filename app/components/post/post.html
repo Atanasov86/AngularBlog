@@ -1,0 +1,55 @@
+<div class="post-container">
+    <article class="post" ng-controller="PostController">
+        <header>
+            <div class="title">
+                <h2><a>{{post.title}}</a></h2>
+            </div>
+            <div class="meta">
+                <time class="published">{{post._kmd.ect | date: 'dd-MMM-yyyy'}}</time>
+                <a href="#/profile/author" class="author"><span class="name">{{post.author}}</span><img src="../assets/img/default-avatar.png" alt="" /></a>
+            </div>
+        </header>
+        <p>{{post.content}}</p>
+        <footer>
+            <ul class="stats">
+                <li class="tags">
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                    <a href="#">General</a>
+                    <a href="#">HTML</a>
+                    <a href="#">Programming</a>
+                    <a href="#">JavaScript</a>
+                </li>
+            </ul>
+        </footer>
+    </article>
+    <hr class="colorgraph">
+    <div id="comments">
+        <h1 class="text-center">Comments</h1>
+        <div class="comment-list">
+            <div class="text-center" ng-if="comments.length === 0">No comments</div>
+            <div ng-repeat="comment in comments" class="panel panel-default">
+                <div class="panel-heading">
+                    <span class="name">Posted by: {{comment.name}}</span>
+                    <span class="date">Posted on: {{comment._kmd.ect | date:'dd-MM-yyyy HH:mm'}}</span>
+                </div>
+                <div class="panel-body">
+                    {{comment.content}}
+                </div>
+            </div>
+        </div>
+        <form class="comment-form">
+            <div class="form-group">                
+                <input type="text" class="form-control input-lg" ng-model="user.name"placeholder="Your name" required/>
+            </div>
+            <div class="form-group">                
+                <input type="text" class="form-control input-lg" ng-model="user.email"placeholder="Your email" />
+            </div>
+            <div class="form-group">
+                <textarea class="form-control input-lg" ng-model="user.comment" rows="5" placeholder="Write your comment"></textarea>
+            </div>
+            <div>
+                <button ng-click="addComment(user)" class="btn btn-success">Publish</button>
+            </div>
+        </form>        
+    </div>
+</div>

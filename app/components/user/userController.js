@@ -39,8 +39,12 @@ app.controller('UserController', [
         		})
         }
 
-        $scope.singUp = function(user) {        	
+        $scope.singUp = function(user) {   
+             	
         	delete user.confirmPassword;
+
+            // set default roles
+            user.roles = 'user';
 
         	userService.register(user)
         		.then(function (response){

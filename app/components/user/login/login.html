@@ -1,4 +1,4 @@
-<div class="row login-div">
+<div class="row login-container">
     <div class="col-md-offset-3 col-md-6 login-form">
         <span>Login via</span>
         <div class="social-buttons text-center">
@@ -7,7 +7,8 @@
             <a href="#" ng-click="singInWithGooglePlus()" class="btn btn-social-icon btn-google-plus"><i class="fa fa-google-plus"></i></a>
             <a href="#" class="btn btn-social-icon btn-github"><i class="fa fa-github"></i></a>
         </div>
-        or
+
+        <hr class="colorgraph">
         <form class="form" role="form" id="login-nav">
             <div class="form-group">
                 <label class="sr-only" for="emailInput">Email address</label>
@@ -18,8 +19,9 @@
                 <input type="password" ng-model="user.password" class="form-control input-lg" id="passwordInput" placeholder="Password" required>
                 <div class="help-block text-right"><a href="#/forget-password">Forget the password ?</a></div>
             </div>
+            
             <div class="form-group">
-                <button type="submit" ng-click="singIn(user)" class="btn btn-primary btn-block btn-lg">Sign in</button>
+                <button type="submit" ng-click="singIn(user)" class="btn btn-success btn-block btn-lg">Sign In</button>
             </div>
             <div class="register-text">
                 <p class="text-center">

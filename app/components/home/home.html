@@ -1,5 +1,30 @@
-<div class="jumbotron">
-  <h1>Jumbotron</h1>
-  <p>This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
-  <p><a class="btn btn-primary btn-lg">Learn more</a></p>
+<div class="post-container">
+    <article class="post" ng-repeat="post in posts">
+        <header>
+            <div class="title">
+                <h2><a href="#/post/{{post._id}}" ng-click="getPostById(post._id)">{{post.title}}</a></h2>
+            </div>
+            <div class="meta">
+                <time class="published">{{post._kmd.ect | date: 'dd-MMM-yyyy'}}</time>
+                <a href="#/profile/author" class="author"><span class="name">{{post.author}}</span><img src="../assets/img/default-avatar.png" alt="" /></a>
+            </div>
+        </header>
+        <p>{{post.content.substring(0, 500) + '...'}}</p>
+        <footer>
+            <ul class="actions">
+                <li><a type="button" href="#/post/{{post._id}}" ng-click="getPostById(post._id)" class="btn btn-default">Continue Reading</a></li>
+            </ul>
+            <ul class="stats">
+                <li class="tags">
+                    <i class="fa fa-tags" aria-hidden="true"></i>
+                    <a href="#">General</a>
+                    <a href="#">HTML</a>
+                    <a href="#">Programming</a>
+                    <a href="#">JavaScript</a>
+                </li>
+                <li><a href="#" class="fa fa-heart icon">28</a></li>
+                <li><a href="#/post/{{post._id}}/#comments" class="fa fa-comment icon">{{post.comments.count}}</a></li>
+            </ul>
+        </footer>
+    </article>
 </div>
