@@ -10,7 +10,7 @@ var app = angular.module('Blog', [
 app.constant('guestUser', {
 	username: 'guestUser',
 	password: '123456',
-	authToken: 'de122d89-1d92-4171-8c24-1a6d4d4cf0ff.wyJJylhORGkKFVYNCygFHWq24/GpN6UxR3prM5tW4rY='
+	authToken: '6527a796-237e-4322-b6a6-09b06da09eae.glQOTvT/4fscRFZJ4Jmxl2k9eZpBzFNS8rACDEiEFQs='
 });
 
 app.config([
@@ -29,37 +29,37 @@ app.config([
         });
 
         $routeProvider.when('/', {
-            templateUrl: 'components/home/home.html',
+            templateUrl: 'app/components/home/home.html',
             controller: 'HomeController'
         });
 
         $routeProvider.when('/login', {
-            templateUrl: 'components/user/login/login.html',
+            templateUrl: 'app/components/user/login/login.html',
             controller: 'UserController'
         });
 
         $routeProvider.when('/register', {
-            templateUrl: 'components/user/register/register.html',
+            templateUrl: 'app/components/user/register/register.html',
             controller: 'UserController'
         });
 
         $routeProvider.when('/profile', {
-            templateUrl: 'components/user/profile/profile.html',
+            templateUrl: 'app/components/user/profile/profile.html',
             controller: 'UserController'
         });
 
         $routeProvider.when('/forget-password', {
-            templateUrl: 'components/user/register.html',
+            templateUrl: 'app/components/user/register.html',
             controller: 'UserController'
         });
 
         $routeProvider.when('/new-post', {
-            templateUrl: 'components/home/new-post.html',
-            controller: 'NewPostController'
+            templateUrl: 'app/components/post/create-post.html',
+            controller: 'PostController'
         });
 
         $routeProvider.when('/post/:id', {
-            templateUrl: 'components/post/post.html',
+            templateUrl: 'app/components/post/post.html',
             controller: 'PostController'
         });
 
@@ -81,8 +81,7 @@ app.run(['$kinvey', 'userService', function($kinvey, userService) {
     let isLoggedIn =  userService.isLoggedIn();
     
 	if (!isLoggedIn) {
+		// $kinvey.User.login('guestUser', '123456');
 		console.log("triggered");
-	}
-
-    
-}])
+	}    
+}]);

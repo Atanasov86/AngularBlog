@@ -2,13 +2,23 @@ body {
     background-color: #EBEBEB;
 }
 
+/* Header styles */
+
+.user-dropdown img {
+    border-radius: 100%;
+    display: inline-block;
+    width: 2em;
+    margin-top: 15px;    
+}
+
+/* End Header styles */
 
 /* Container styles*/
 
 .main {
     float: right;
-    width: 81%;
-    margin-left: 10px;
+    width: 79%;
+    margin-right: 20px;
     border-radius: 15px;
     display: inline-block;
 }
@@ -35,6 +45,7 @@ footer .list-inline a {
 
 .sidebars {
     width: 18%;
+    float: right;
     display: inline-block;
 }
 
@@ -53,22 +64,19 @@ footer .list-inline a {
 
 .categories h4,
 .recent-posts h4,
-.popular-tags h4 {
-    text-align: center;
+.popular-tags h4 {    
     margin-top: 0;
 }
 
-.list-group {
+.sidebars ul {
+    padding: 0;
     list-style: none;
 }
 
-.list-group li {
-    margin-top: 5px;
+.sidebars ul li {
+    margin-bottom: 10px;
 }
 
-a.list-group-item {
-    font-size: 14px;
-}
 
 
 /* End sidebar styles */
@@ -116,8 +124,6 @@ a.list-group-item {
     clear: both;
     padding: 14px;
 }
-
-.social-buttons {}
 
 #login-dp .social-buttons {
     margin: 12px 0
@@ -400,3 +406,49 @@ a.list-group-item {
 }
 
 /* End comment style */
+
+/* New Post styles */
+
+.new-post {
+    background-color: white;
+    padding: 21px;
+    border-radius: 15px;    
+}
+
+.new-post h4 {    
+    margin-top: 0;
+}
+
+.post-title,
+.post-author {
+    display: inline-block;
+    box-sizing: border-box;
+}
+
+.post-title {
+    width: 50%;
+    margin-right: 5px;
+}
+
+.post-author {
+    width: 20%;
+}
+
+.post-category,
+.post-content {
+    margin-top: 10px;
+}
+
+.post-category {
+    width: 20%;
+}
+
+.post-content {
+    width: 71%;
+}
+
+.publish-btn {
+    margin-right: 10px;    
+}
+
+/* End New Post styles */

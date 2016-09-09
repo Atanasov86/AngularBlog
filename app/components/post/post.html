@@ -1,12 +1,15 @@
 <div class="post-container">
-    <article class="post" ng-controller="PostController">
+    <article class="post">
         <header>
             <div class="title">
                 <h2><a>{{post.title}}</a></h2>
             </div>
             <div class="meta">
                 <time class="published">{{post._kmd.ect | date: 'dd-MMM-yyyy'}}</time>
-                <a href="#/profile/author" class="author"><span class="name">{{post.author}}</span><img src="../assets/img/default-avatar.png" alt="" /></a>
+                <a href="#/profile/author" class="author">
+                    <span class="name">{{post.author}}</span>
+                    <img src="app/assets/img/default-avatar.png" />
+                </a>
             </div>
         </header>
         <p>{{post.content}}</p>
@@ -38,10 +41,10 @@
             </div>
         </div>
         <form class="comment-form">
-            <div class="form-group">                
+            <div class="form-group" ng-if="!userService.isLoggedIn()">                
                 <input type="text" class="form-control input-lg" ng-model="user.name"placeholder="Your name" required/>
             </div>
-            <div class="form-group">                
+            <div class="form-group" ng-if="!userService.isLoggedIn()">                
                 <input type="text" class="form-control input-lg" ng-model="user.email"placeholder="Your email" />
             </div>
             <div class="form-group">

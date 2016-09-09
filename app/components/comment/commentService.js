@@ -1,57 +1,79 @@
-'use strict'
+'use strict';
 
 app.factory('commentService', [
-	'$kinvey',
-	'$q',
-	function ($kinvey, $q) {
-		
-		function getCommentsByPostId (postId) {
-			let deferred = $q.defer();
+    '$kinvey',
+    '$q',
+    function($kinvey, $q) {
 
-			let dataStore = $kinvey.DataStore.collection('comments');
+        function getCommentsByPostId(postId) {
+            let deferred = $q.defer();
 
-			let query = new $kinvey.Query();
+            let dataStore = $kinvey.DataStore.collection('comments');
 
-			query.equalTo('type._id', postId);
+            let query = new $kinvey.Query();
+
+            query.equalTo('post._id', postId);
 
             dataStore.find(query)
-            	.subscribe(function (data){
-            		deferred.resolve(data);
-            	}, function (err){
-            		deferred.reject(err);
-            	});
+                .subscribe(function(data) {
+                    deferred.resolve(data);
+                }, function(err) {
+                    deferred.reject(err);
+                });
 
             return deferred.promise;
-		}
+        }
 
-		function addCommentByPostId (postId, commentData) {
-			let deferred = $q.defer();
+        function addComment(postId, commentData) {
+            let deferred = $q.defer();
 
-			let dataStore = $kinvey.DataStore.collection('comments');
+            let dataStore = $kinvey.DataStore.collection('comments');
 
-			let data = {
-				name: commentData.name,
-				email: commentData.email,
-				content: commentData.comment,
-				type: {
-					_type: 'KinveyRef',
-					_id: postId,
-					_collection: 'comments'
-				}
-			}
+            let user = localStorage['kid_SJ6T9biKkinvey_user'];
 
-			let promise = dataStore.save(data)
-				.then(function onSuccess(entity){
-					deferred.resolve(entity);
-				}, function onError(err){
-					deferred.reject(err);
-				})
+            let data = {};
 
-			return deferred.promise;
-		}
+            if (!user) {
+                data = {
+                    name: commentData.name,
+                    email: commentData.email,
+                    content: commentData.comment,
+                    post: {
+                        _type: 'KinveyRef',
+                        _id: postId,
+                        _collection: 'comments'
+                    }
+                };
+            } else {
+                let userData = JSON.parse(user);
+                
+                data = {
+                    name: userData.firstName + " " + userData.lastName,
+                    email: userData.email,
+                    content: commentData.comment,
+                    post: {
+                        _type: 'KinveyRef',
+                        _id: postId,
+                        _collection: 'comments'
+                    }
+                };
+            }
 
-	return {
-		getCommentsByPostId: getCommentsByPostId,
-		addCommentByPostId: addCommentByPostId
-	};
-}])
+
+
+            dataStore.save(data)
+                .then(function onSuccess(entity) {
+                    deferred.resolve(entity);
+                }, function onError(err) {
+                    deferred.reject(err);
+                })
+
+            return deferred.promise;
+        }
+
+        return {
+            getCommentsByPostId: getCommentsByPostId,
+            addComment: addComment
+        };
+    }
+])

@@ -43,7 +43,7 @@ app.controller('UserController', [
              	
         	delete user.confirmPassword;
 
-            // set default roles
+            //set default roles
             user.roles = 'user';
 
         	userService.register(user)

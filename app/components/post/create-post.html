@@ -1,0 +1,34 @@
+<div class="new-post">
+    <form>
+        <fieldset>
+            <legend class="text-center">Create Post</legend>
+            
+            <div class="post-title">
+                <label for="title">Title:</label>
+                <input type="text" class="form-control" ng-model="createdPost.title" id="title" placeholder="Title of Post" required/>
+            </div>
+            <div class="post-author">
+                <label for="author">Author:</label>
+                <input type="text" class="form-control" ng-model="createdPost.author" id="author" disabled ng-value="userService.getCurrentUser().username" />
+            </div>
+
+            <div class="post-category">
+            	<label for="category">Category: </label>
+            	<input class= "form-control" id="category" type="text" ng-model="createdPost.category" />
+            	<p>{{createdPost.category}}</p>
+            </div>            
+
+            <div class="post-content">
+                <label for="content">Content</label>
+                <textarea rows="10" type="text" class="form-control" ng-model="createdPost.content" id="content" placeholder="Content of post" required/>
+            </div>
+
+            <hr class="colorgraph">
+            
+            <div>
+                <button ng-click="createPost(createdPost)" class="publish-btn btn btn-success btn-lg">Publish</button>
+                <a href="#/" class="btn btn-primary btn-lg">Cancel</a>
+            </div>
+        </fieldset>
+    </form>
+</div>

@@ -1,51 +1,64 @@
 'use strict';
 
 app.controller("PostController", [
-	'$scope',
-	'postService',
+    '$scope',
+    'postService',
+    'userService',
     'commentService',
-	'$location',
+    '$location',
     '$routeParams',
-	'ngToast',
-    '$route',	
-	function($scope, postService, commentService, $location, $routeParams, ngToast, $route){
-        
-        $scope.getPostById = function ($routeParams) {
+    'ngToast',
+    '$route',
+    function($scope, postService, userService, commentService, $location, $routeParams, ngToast, $route) {
+
+        $scope.userService = userService;
+
+        $scope.getPostById = function($routeParams) {
             postService.getPostById($routeParams.id)
-                .then(function (post){
+                .then(function(post) {
                     $scope.post = post;
                     commentService.getCommentsByPostId($routeParams.id)
-                        .then(function (comments) {
+                        .then(function(comments) {
                             $scope.comments = comments;
-                        }, function (err){
+                        }, function(err) {
                             ngToast.danger(err);
-                        })
-                }, function (err){
+                        });
+                }, function(err) {
                     ngToast.danger(err);
-                })
+                });
         };
 
-        $scope.getComments = function (comment) {
-            commentService.getPostById($)
-        }
+        $scope.getRecentPost = function() {
+            postService.getRecentPosts()
+                .then(function onSuccess(recentPosts) {
+                    $scope.recentPosts = recentPosts;
+                }, function onError(err) {
+                    ngToast.danger(err);
+                });
+        };
 
-        $scope.addComment = function (commentData) {
-            commentService.addCommentByPostId($routeParams.id, commentData)
-                .then(function onSucceess(response){
-                    console.log(response);
+
+        $scope.addComment = function(commentData) {
+            commentService.addComment($routeParams.id, commentData)
+                .then(function(response) {
                     ngToast.success("You are succeessfully added comment.");
                     $route.reload();
-                }, function onError(err){
+                }, function(err) {
                     ngToast.danger(err);
-                    console.log(err);
-                })
-        }
-
-        $scope.viewPost = function (postId) {
-            $location.path('/post/' + postId);
+                });
         };
 
+        $scope.createPost = function(post) {
+            postService.createPost(post)
+                .then(function(response) {
+                    console.log(response);
+                    ngToast.success("You are successfully added post");
+                    $location.path('/');
+                }, function(err) {
+                    ngToast.danger(err);
+                });
+        }
+
         $scope.getPostById($routeParams);
-		
-	}	
+    }
 ]);

@@ -97,6 +97,15 @@ app.factory('userService', [
             return !!localStorage['kid_SJ6T9biKkinvey_user'];
         }
 
+        function isAdmin() {
+            let user = localStorage['kid_SJ6T9biKkinvey_user'];
+            
+            if (user) {
+                let userData = JSON.parse(user);                              
+                return userData.roles === 'administrator'; 
+            }
+        }
+
 
         return {
             login: login,
@@ -105,7 +114,8 @@ app.factory('userService', [
             register: register,
             logout: logout,
             getCurrentUser: getCurrentUser,
-            isLoggedIn: isLoggedIn
+            isLoggedIn: isLoggedIn,
+            isAdmin: isAdmin
         };
     }
 ]);
