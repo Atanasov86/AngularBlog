@@ -75,7 +75,7 @@ app.config([
             controller: 'ViewPostController'
         });
 
-        $routeProvider.when('/post/category/:id', {
+        $routeProvider.when('/posts/category/:id', {
             templateUrl: 'app/views/post/post.html',
             controller: 'PostController'
         });

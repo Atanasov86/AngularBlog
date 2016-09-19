@@ -156,7 +156,7 @@ app.factory('userService', [
 
         function isAdmin() {
             let user = getCurrentUser();
-            return (user !== undefined) && (user.roles === 'administrator');
+            return (user !== undefined) && (user.role === 'administrator');
         }
 
 

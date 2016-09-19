@@ -80,32 +80,28 @@ app.factory('postService', [
                     ngToast.danger(err.data);
                 });
         }
-        //
-        // function createPost(post) {
-        //     let deferred = $q.defer();
-        //
-        //     let author = JSON.parse(localStorage['kid_SJ6T9biKkinvey_user']);
-        //
-        //     post.author = author.firstName + " " + author.lastName;
-        //
-        //     let dataStore = $kinvey.DataStore.collection('posts');
-        //
-        //     dataStore.save(post)
-        //         .then(function(response) {
-        //             deferred.resolve(response);
-        //         }, function(err) {
-        //             deferred.reject(err);
-        //         });
-        //
-        //     return deferred.promise;
-        // }
-        //
+
+        function createPost(post) {
+            let deferred = $q.defer();
+
+            userService.setAuthHeaders(true, true);
+
+            $http.post(postRequestUrl, post)
+                .then(function(response) {
+                    deferred.resolve(response.data);
+                }, function(err) {
+                    deferred.reject(err.data);
+                });
+
+            return deferred.promise;
+        }
+
         return {
             getAllPosts: getAllPosts,
             getPostById: getPostById,
             getRecentPosts: getRecentPosts,
             updatePost: updatePost,
-            // createPost: createPost
+            createPost: createPost
         };
     }
 ]);

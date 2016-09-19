@@ -9,10 +9,17 @@ app.controller("PostController", [
     '$location',
     '$routeParams',
     'ngToast',
+    // 'ckeditor',
     '$route',
     function($scope, postService, userService, commentService, tagService, $location, $routeParams, ngToast, $route) {
 
         $scope.userService = userService;
+
+        $scope.options = {
+            language: 'en',
+            allowedContent: true,
+            entities: false
+        };
 
         $scope.getPostById = function(postId) {
             postService.getPostById(postId)
@@ -28,40 +35,17 @@ app.controller("PostController", [
                     ngToast.danger(err);
                 });
         };
-        //
-        // $scope.getPostByTag = function($routeParams) {
-        //     tagService.getPostByTag($routeParams.id)
-        //         .then(function(reponse){
-        //             console.log(response);
-        //         })
-        // };
-        //
-        // $scope.getTags = function(query){
-        //     tagService.getTags();
-        // };
-        //
-        // $scope.addComment = function(commentData) {
-        //     commentService.addComment($routeParams.id, commentData)
-        //         .then(function(response) {
-        //             console.log(response);
-        //             ngToast.success("You are succeessfully added comment.");
-        //             $route.reload();
-        //         }, function(err) {
-        //             ngToast.danger(err);
-        //         });
-        // };
-        //
-        // $scope.createPost = function(post) {
-        //     postService.createPost(post)
-        //         .then(function(response) {
-        //             console.log(response);
-        //             ngToast.success("You are successfully added post");
-        //             $location.path('/');
-        //         }, function(err) {
-        //             ngToast.danger(err);
-        //         });
-        // };
-        //
+
+        $scope.createPost = function(post) {
+            postService.createPost(post)
+                .then(function(response) {
+                    ngToast.success("You are successfully added post");
+                    $location.path('/posts');
+                }, function(err) {
+                    ngToast.danger(err);
+                });
+        };
+
 
         $scope.viewPost = function(postId) {
             $location.path('/post/' + postId);
