@@ -2,7 +2,7 @@
     <article class="post">
         <header>
             <div class="title">
-                <h2><a>{{post.title}}</a></h2>
+                <h2>{{post.title}}</h2>
             </div>
             <div class="meta">
                 <time class="published">{{post._kmd.ect | date: 'dd-MMM-yyyy'}}</time>
@@ -12,7 +12,7 @@
                 </a>
             </div>
         </header>
-        <p>{{post.content}}</p>
+        <p ng-bind-html="post.content"></p>
         <footer>
             <ul class="stats">
                 <li class="tags">
@@ -32,7 +32,7 @@
             <div class="text-center" ng-if="comments.length === 0">No comments</div>
             <div ng-repeat="comment in comments" class="panel panel-default">
                 <div class="panel-heading">
-                    <span class="name">Posted by: {{comment.name}}</span>
+                    <span class="name">Posted by: {{comment.author}}</span>
                     <span class="date">Posted on: {{comment._kmd.ect | date:'dd-MM-yyyy HH:mm'}}</span>
                 </div>
                 <div class="panel-body">
@@ -41,18 +41,18 @@
             </div>
         </div>
         <form class="comment-form">
-            <div class="form-group" ng-if="!userService.isLoggedIn()">                
-                <input type="text" class="form-control input-lg" ng-model="user.name"placeholder="Your name" required/>
+            <div class="form-group" ng-show="!userService.isLoggedIn()">
+                <input type="text" class="form-control input-lg" ng-model="commentData.author" placeholder="Your name"/>
             </div>
-            <div class="form-group" ng-if="!userService.isLoggedIn()">                
-                <input type="text" class="form-control input-lg" ng-model="user.email"placeholder="Your email" />
+            <div class="form-group" ng-show="!userService.isLoggedIn()">
+                <input type="text" class="form-control input-lg" ng-model="commentData.email" placeholder="Your email"/>
             </div>
             <div class="form-group">
-                <textarea class="form-control input-lg" ng-model="user.comment" rows="5" placeholder="Write your comment"></textarea>
+                <textarea class="form-control input-lg" ng-model="commentData.content" rows="5" placeholder="Write your comment" required></textarea>
             </div>
             <div>
-                <button ng-click="addComment(user)" class="btn btn-success">Publish</button>
+                <button ng-click="addComment(commentData)" class="btn btn-success">Publish</button>
             </div>
-        </form>        
+        </form>
     </div>
 </div>

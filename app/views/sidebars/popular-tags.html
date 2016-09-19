@@ -1,0 +1,6 @@
+<div>
+    <h4>Popular Tags</h4>
+    <div>
+    	<span class="tag" ng-repeat="tag in tags"><a href="#/post/tag/{{tag.title}}" ng-click="getPostByTag(tag)">{{tag.title}}</a></span>
+    </div>
+</div>

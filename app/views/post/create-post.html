@@ -16,11 +16,19 @@
             	<label for="category">Category: </label>
             	<input class= "form-control" id="category" type="text" ng-model="createdPost.category" />
             	<p>{{createdPost.category}}</p>
+            </div>
+
+            <div class="post-tags">
+                <label for="tags">Tags: </label>
+                <tags-input id="tags" ng-model="tags">
+                    <auto-complete source="getTags($query)"></auto-complete>
+                </tags-input>
             </div>            
 
             <div class="post-content">
                 <label for="content">Content</label>
-                <textarea rows="10" type="text" class="form-control" ng-model="createdPost.content" id="content" placeholder="Content of post" required/>
+                <!--<textarea rows="10" type="text" class="form-control" ng-model="createdPost.content" id="content" placeholder="Content of post" required/>-->
+                <text-angular ng-model="createdPost.content" id="content"></text-angular>
             </div>
 
             <hr class="colorgraph">

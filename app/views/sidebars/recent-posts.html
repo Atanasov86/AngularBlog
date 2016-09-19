@@ -1,0 +1,12 @@
+<form class="navbar-form" role="search">
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search">
+    </div>
+    <button type="submit" class="btn btn-success">Submit</button>
+</form>
+<h4>Recent Posts</h4>
+<ul>
+    <li ng-repeat="recentPost in recentPosts">
+    	<a href='#/post/{{recentPost._id}}'>{{recentPost.title}}</a>
+    </li>        
+</ul>

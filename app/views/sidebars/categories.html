@@ -1,0 +1,6 @@
+<div>
+    <h4>Categories</h4>
+    <select class="form-control" ng-model='selectedCategory' ng-options="category as category.name for category in categories" ng-click="getPostByCategory(selectedCategory)" ng-change="updatePath(selectedCategory)">
+    	<option value="">-- Choose category --</option>    	
+    </select>
+</div>

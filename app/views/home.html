@@ -1,18 +1,22 @@
-<div class="post-container">
+<div class="post-container" ng-controller="PostController">
     <article class="post" ng-repeat="post in posts">
         <header>
             <div class="title">
-                <h2><a href="#/post/{{post._id}}" ng-click="getPostById(post._id)">{{post.title}}</a></h2>
+                <h2>
+                    <a ng-click="viewPost(post._id)">
+                        {{post.title}}
+                    </a>
+                </h2>
             </div>
             <div class="meta">
                 <time class="published">{{post._kmd.ect | date: 'dd-MMM-yyyy'}}</time>
-                <a href="#/profile/author" class="author"><span class="name">{{post.author}}</span><img src="../assets/img/default-avatar.png" alt="" /></a>
+                <a href="#/profile/author" class="author"><span class="name">{{post.author}}</span><img src="app/assets/img/default-avatar.png" alt="" /></a>
             </div>
         </header>
-        <p>{{post.content.substring(0, 500) + '...'}}</p>
+        <p ng-bind-html="post.content"></p>
         <footer>
             <ul class="actions">
-                <li><a type="button" href="#/post/{{post._id}}" ng-click="getPostById(post._id)" class="btn btn-default">Continue Reading</a></li>
+                <li><a type="button" ng-click="viewPost(post._id)" class="btn btn-default">Continue Reading</a></li>
             </ul>
             <ul class="stats">
                 <li class="tags">
@@ -26,5 +30,6 @@
                 <li><a href="#/post/{{post._id}}/#comments" class="fa fa-comment icon">{{post.comments.count}}</a></li>
             </ul>
         </footer>
+        <hr class="colorgraph">
     </article>
 </div>
